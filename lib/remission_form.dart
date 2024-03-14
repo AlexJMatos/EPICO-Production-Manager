@@ -12,8 +12,9 @@ class _RemissionState extends State<RemissionForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   static const plant = ["COZUMEL - 0001", "XPUJIL - 0002"];
-  static const customer = ["CLIENTE - 0001", "CLIENTE - 0002"];
-  static const projects = ["OBRA - 0001", "OBRA - 0002"];
+  static const customer = ["EPICO CONCRETOS - 0001", "ARQCOZ - 0002"];
+  static const projects = ["CASA OCIO - 0001", "TREN MAYA - 0002"];
+  static const products = ["100-RR3-14", "150-R-14", "200-R-14", "250-R-14"];
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +28,7 @@ class _RemissionState extends State<RemissionForm> {
           buildGeneralInfoSection(plant),
           buildProjectAndCustomerSection(customer, projects),
           buildDivider("Producto y cantidad"),
+          buildProductInfoSection(products),
           buildDivider("Dosificador y unidad")
         ],
       ),
@@ -112,6 +114,34 @@ Flexible buildProjectAndCustomerSection(
               fieldName: "Obra",
               options: projects,
             ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Flexible buildProductInfoSection(List<String> products) {
+  return Flexible(
+    child: Row(
+      children: [
+        Flexible(
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: AutoCompleteElement(
+              fieldName: "Pedido",
+              options: products,
+            ),
+          ),
+        ),
+        Flexible(
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: InputDatePickerFormField(
+                firstDate: DateTime.now(),
+                lastDate: DateTime.now().add(const Duration(days: 365)),
+                fieldLabelText: "Fecha",
+                initialDate: DateTime.now()),
           ),
         ),
       ],

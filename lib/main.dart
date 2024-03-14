@@ -8,7 +8,7 @@ void main() {
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
-static const appTitle = 'EPICO Concretos - Produccion';
+static const appTitle = 'EPICO Concretos - Producción';
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +17,7 @@ static const appTitle = 'EPICO Concretos - Produccion';
       home: const HomePage(title: appTitle),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
+      locale: const Locale("es"),
     );
   }
 }
