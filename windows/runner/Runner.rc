@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "epico_remissions_manager" "\0"
+            VALUE "FileDescription", "epico_production_manager" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "epico_remissions_manager" "\0"
+            VALUE "InternalName", "epico_production_manager" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "epico_remissions_manager.exe" "\0"
-            VALUE "ProductName", "epico_remissions_manager" "\0"
+            VALUE "OriginalFilename", "epico_production_manager.exe" "\0"
+            VALUE "ProductName", "epico_production_manager" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

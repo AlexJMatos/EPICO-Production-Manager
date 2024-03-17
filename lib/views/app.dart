@@ -1,4 +1,4 @@
-import 'package:epico_remissions_manager/remission_form.dart';
+import 'package:epico_remissions_manager/views/remission_form.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

@@ -1,25 +1,25 @@
 import 'package:epico_remissions_manager/models/manager.dart';
 
-import 'address.dart';
+import 'location.dart';
 import 'company.dart';
 
-class ConcretePlant {
+class ConcreteBatchingPlant {
   String id;
   String plant;
   Manager manager;
-  Address address;
+  Location location;
   Company company;
 
-  ConcretePlant({
+  ConcreteBatchingPlant({
     required this.id,
     required this.plant,
     required this.manager,
-    required this.address,
+    required this.location,
     required this.company,
   });
 
   @override
   String toString() {
-    return 'ConcretePlant: { id: $id, plant: $plant, manager: $manager, address: $address, company: $company }';
+    return 'ConcretePlant: { id: $id, plant: $plant, manager: $manager, location: $location, company: $company }';
   }
 }

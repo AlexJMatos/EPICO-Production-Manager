@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 
-class AutoCompleteElement extends StatelessWidget {
+class AutoCompleteElement extends StatefulWidget {
   final String fieldName;
   final List<String> options;
 
   const AutoCompleteElement(
-      {super.key, required this.options, required this.fieldName});
+      {super.key, required this.fieldName, required this.options});
 
+  @override
+  State<AutoCompleteElement> createState() => _AutoCompleteElementState();
+}
+
+class _AutoCompleteElementState extends State<AutoCompleteElement> {
   @override
   Widget build(BuildContext context) {
     return Autocomplete<String>(
@@ -14,7 +19,7 @@ class AutoCompleteElement extends StatelessWidget {
         if (textEditingValue.text == '') {
           return const Iterable<String>.empty();
         }
-        return options.where((String option) {
+        return widget.options.where((String option) {
           return option.contains(textEditingValue.text.toUpperCase());
         });
       },
@@ -27,7 +32,7 @@ class AutoCompleteElement extends StatelessWidget {
           controller: textEditingController,
           focusNode: focusNode,
           decoration: InputDecoration(
-            label: Text(fieldName),
+            label: Text(widget.fieldName),
             border: const OutlineInputBorder(),
           ),
         );

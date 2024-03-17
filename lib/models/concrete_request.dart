@@ -1,13 +1,13 @@
 
 import 'package:epico_remissions_manager/models/company.dart';
-import 'package:epico_remissions_manager/models/concrete_plant.dart';
+import 'package:epico_remissions_manager/models/concrete_batching_plant.dart';
 import 'package:epico_remissions_manager/models/concrete_request_specification.dart';
 import 'package:epico_remissions_manager/models/project_site.dart';
 
 class ConcreteRequest {
   String id;
   DateTime date;
-  ConcretePlant plant;
+  ConcreteBatchingPlant plant;
   Company client;
   ProjectSite site;
   double requiredQuantity;

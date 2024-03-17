@@ -1,5 +1,8 @@
-import 'package:epico_remissions_manager/autocomplete.dart';
+import 'package:epico_remissions_manager/service/pocket_base_service.dart';
+import 'package:epico_remissions_manager/views/autocomplete.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:pocketbase/pocketbase.dart';
 
 class RemissionForm extends StatefulWidget {
   const RemissionForm({super.key});
@@ -9,12 +12,31 @@ class RemissionForm extends StatefulWidget {
 }
 
 class _RemissionState extends State<RemissionForm> {
+  final pb = PocketBase(dotenv.get("BACKEND_URL"));
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  static const plant = ["COZUMEL - 0001", "XPUJIL - 0002"];
+  PocketBaseService pocketbase = PocketBaseService.instance;
+  static List<String> concretebatchingPlants = [];
   static const customer = ["EPICO CONCRETOS - 0001", "ARQCOZ - 0002"];
   static const projects = ["CASA OCIO - 0001", "TREN MAYA - 0002"];
   static const products = ["100-RR3-14", "150-R-14", "200-R-14", "250-R-14"];
+
+  @override
+  void initState() {
+    super.initState();
+    _getDataFromBackend();
+  }
+
+  void _getDataFromBackend() async {
+    final result = await pocketbase.loadConcreteBatchingPlants();
+    setState(() {
+      concretebatchingPlants = result
+          .map((e) =>
+              "${e.getStringValue("identifier_name")} - 000${e.getIntValue("plant_number")}")
+          .toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +47,7 @@ class _RemissionState extends State<RemissionForm> {
         children: [
           buildTitleSection(),
           buildDivider("General"),
-          buildGeneralInfoSection(plant),
+          buildGeneralInfoSection(concretebatchingPlants),
           buildProjectAndCustomerSection(customer, projects),
           buildDivider("Producto y cantidad"),
           buildProductInfoSection(products),

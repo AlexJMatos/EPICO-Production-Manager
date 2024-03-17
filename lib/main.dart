@@ -1,15 +1,17 @@
-import 'package:epico_remissions_manager/app.dart';
+import 'package:epico_remissions_manager/views/app.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: "dev.env");
   runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
-static const appTitle = 'EPICO Concretos - Producción';
-
+  static const appTitle = 'EPICO Concretos - Producción';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

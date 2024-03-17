@@ -1,11 +1,11 @@
-class Address {
-  String id;
+class Location {
+  int id;
   String street;
   String city;
   String state;
   String zipCode;
 
-  Address(
+  Location(
       {required this.id,
       required this.street,
       required this.city,
